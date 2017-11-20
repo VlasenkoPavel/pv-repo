@@ -1,0 +1,43 @@
+{namespace grt.lTest.bMessageList.Template}
+
+/**
+ * @typedef {{
+ *     data: {
+ *      },
+ *      config: {
+ *      }
+ * }} grt.bTextDiv.Params
+ */
+
+/**
+ * @extends cl.iControl.Template
+ * @constructor
+ */
+{template .messageList}
+    {call .init data="all" /}
+{/template}
+
+/**
+ * Extend to place additional sections
+ * @override
+ */
+{template .body}
+    <div class="{call .rootClass /}__content">
+
+    </div>
+{/template}
+
+/**
+ * Root css class
+ */
+{template .rootClass}
+    b-message-list
+{/template}
+
+/**
+ * Template Name
+ */
+{template .NAME}
+    MessageList
+{/template}
+
