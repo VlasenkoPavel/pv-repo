@@ -1,0 +1,60 @@
+SELECT goods.price, oders.id as order_id, order_goods.product_id FROM goods
+
+INNER JOIN orders_goods on orders_goods.products.id = goods.id
+	
+INNER JOIN orders on orders.id = orders_goods.orders_id;
+
+use shop;
+
+SELECT orders.user_name, products_types.`type`, goods.price,
+	 orders.id as order_id, order_goods.product_id, 
+
+	 order_goods.`count`, order_goods.`count` * goods.price as total_price FROM goods
+
+	INNER JOIN order_goods on order_goods.product_id = goods.id
+
+    	INNER JOIN products_types on goods.type_id = products_types.id
+
+	INNER JOIN orders on orders.id = order_goods.order_id;
+
+SELECT sum(price) as order_total_price, goods.price, orders.id as order_id, order_goods.product_id FROM goods
+
+	INNER JOIN order_goods on order_goods.product_id = goods.id
+
+	INNER JOIN orders on orders.id = order_goods.order_id
+
+    	WHERE orders.id = 1;
+
+SELECT sum(price) as order_total_price, count(*) as total_products, orders.id as order_id FROM goods
+
+	INNER JOIN order_goods on order_goods.product_id = goods.id
+
+	INNER JOIN orders on orders.id = order_goods.order_id
+
+    	WHERE orders.id = 2;
+
+SELECT sum(goods.price*order_goods.`count`) as order_total_price, count(*) as total_products, orders.id as order_id FROM goods
+
+	INNER JOIN order_goods on order_goods.product_id = goods.id
+
+	INNER JOIN orders on orders.id = order_goods.order_id
+
+    WHERE orders.id = 2;
+
+SELECT sum(goods.price*order_goods.`count`) as order_total_price, count(*) as total_products_types, orders.id as order_id FROM goods
+
+	INNER JOIN order_goods on order_goods.product_id = goods.id
+
+	INNER JOIN orders on orders.id = order_goods.order_id
+
+    WHERE orders.id = 1;
+
+use shop;
+SELECT user_name, sum(order_goods.count * goods.price) as total_price
+	FROM goods
+
+	INNER JOIN order_goods on order_goods.product_id = goods.id
+
+	INNER JOIN orders on orders.id = order_goods.order_id
+
+        group by user_name;

@@ -1,0 +1,139 @@
+﻿use shop;
+-- создание базы данных 
+
+shop
+
+CREATE SCHEMA `shop` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin ;
+
+
+
+-- отобразить все базы данных
+
+
+show databases;
+
+
+-- работать с указанной базой данных
+(после выполнения этой команды вместо `shop`.`category` можно будет писать просто category )
+
+use shop;
+
+
+
+-- создание таблицы "категория товаров"
+
+
+
+CREATE TABLE `shop`.`category` (
+ 
+`id` INT NOT NULL,
+  
+  
+`name` VARCHAR(128) NOT NULL,
+
+`discount` TINYINT NOT NULL,
+
+
+PRIMARY KEY (`id`));
+
+
+
+-- добавление нового столбца
+
+
+
+ALTER TABLE `shop`.`category` 
+
+ADD COLUMN `alias_name` VARCHAR(128) NULL AFTER `discount`;
+
+
+
+-- посмотреть структуру таблицы
+
+
+SHOW COLUMNS FROM category;
+
+
+
+
+-- удалить таблицу
+
+
+DROP TABLE `shop`.`category`;
+
+
+
+
+-- удалить базу данных
+
+
+
+
+
+DROP DATABASE `shop`;
+
+
+
+-- == SELECT == --
+-- вывести все категории товаров
+
+
+SELECT * FROM category;
+
+
+
+-- == WHERE == --
+-- вывести категорию товаров с идентификатором, равным 3
+
+
+SELECT * FROM category WHERE id = 3;
+
+
+
+-- вывести категории товаров, у которых скидка не равна 0
+
+
+SELECT * FROM category WHERE discount <> 0;
+
+
+
+-- вывести категории товаров, у которых скидка больше 5
+
+
+SELECT * FROM category WHERE discount > 5;
+
+
+
+-- вывести категории товаров, у которых скидка больше 5 и меньше 15
+
+
+SELECT * FROM category WHERE (discount > 5) AND (discount < 15);
+
+
+
+-- вывести категории товаров, у которых скидка меньше 5 или больше или равен 10
+
+
+SELECT * FROM category WHERE (discount < 5) OR (discount >= 10);
+
+
+
+-- вывести категории товаров, у которых скидка не меньше 5
+
+
+SELECT * FROM category WHERE NOT (discount < 5);
+
+
+
+-- вывести категории товаров, у которых есть псевдоним
+
+
+SELECT * FROM category WHERE alias_name IS NOT NULL;
+
+
+
+-- вывести категории товаров, у которых нет псевдонима
+
+
+SELECT * FROM category WHERE alias_name IS NULL;
+
