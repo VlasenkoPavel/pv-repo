@@ -5,8 +5,8 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
-import { router as index} from './routes/index';
-import { router as users} from './routes/users';
+import { router as index } from './routes/index';
+import { router as users } from './routes/users';
 
 const app = express();
 
