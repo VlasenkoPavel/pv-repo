@@ -1,12 +1,12 @@
-import * as express from 'express';
-import * as path from 'path';
-import * as favicon from 'serve-favicon';
-import * as logger from 'morgan';
-import * as cookieParser from 'cookie-parser';
-import * as bodyParser from 'body-parser';
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 
-import * as index from './routes/index';
-import * as users from './routes/users';
+import { router as index} from './routes/index';
+import { router as users} from './routes/users';
 
 const app = express();
 
@@ -43,4 +43,4 @@ app.use(function(err: any, req: any, res: any, next: any) {
   res.render('error');
 });
 
-export { app };
+module.exports = app;

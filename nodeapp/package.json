@@ -15,8 +15,14 @@
     "serve-favicon": "~2.4.5"
   },
   "devDependencies": {
+    "@types/gulp": "^4.0.5",
+    "@types/gulp-sourcemaps": "0.0.32",
+    "@types/gulp-typescript": "^2.13.0",
     "gulp": "^3.9.1",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-sourcemaps-support": "0.0.1",
     "gulp-typescript": "^4.0.1",
+    "gulp-typescript-glob": "0.0.1",
     "typescript": "^2.7.1"
   }
 }

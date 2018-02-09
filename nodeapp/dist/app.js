@@ -1,10 +1,13 @@
-import * as express from 'express';
-import * as path from 'path';
-import * as logger from 'morgan';
-import * as cookieParser from 'cookie-parser';
-import * as bodyParser from 'body-parser';
-import * as index from './routes/index';
-import * as users from './routes/users';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const index_1 = require("./routes/index");
+const users_1 = require("./routes/users");
 const app = express();
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
@@ -16,8 +19,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
-app.use('/', index);
-app.use('/users', users);
+app.use('/', index_1.router);
+app.use('/users', users_1.router);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
@@ -33,4 +36,4 @@ app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.render('error');
 });
-export { app };
+module.exports = app;
