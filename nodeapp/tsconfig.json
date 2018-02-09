@@ -1,9 +1,13 @@
 {
-    "files": [
-        "src/main.ts"
-    ],
     "compilerOptions": {
         "noImplicitAny": true,
-        "target": "es5"
-    }
+        "target": "es6"
+    },
+    "exclude": [
+        "./node_modules",
+        "./dist"
+    ],
+    "include": [
+        "./src/**/*.ts"
+    ]
 }
