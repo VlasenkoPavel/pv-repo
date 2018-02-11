@@ -6,8 +6,12 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+// var log = require('../libs/log')(module);
+// import { log } from 'util';
 const index_1 = require("./routes/index");
 const users_1 = require("./routes/users");
+const log_1 = require("./libs/log");
+const log = log_1.getLogger(module);
 const app = express();
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
@@ -31,6 +35,7 @@ app.use(function (req, res, next) {
 app.use(function (err, req, res, next) {
     // set locals, only providing error in development
     res.locals.message = err.message;
+    // res.locals.message = 'errorMes';
     res.locals.error = req.app.get('env') === 'development' ? err : {};
     // render the error page
     res.status(err.status || 500);

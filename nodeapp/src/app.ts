@@ -4,9 +4,13 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+// var log = require('../libs/log')(module);
+// import { log } from 'util';
 
 import { router as index } from './routes/index';
 import { router as users } from './routes/users';
+import { getLogger } from './libs/log';
+const log = getLogger(module);
 
 const app = express();
 
@@ -36,10 +40,11 @@ app.use(function(req: any, res: any, next: any) {
 app.use(function(err: any, req: any, res: any, next: any) {
   // set locals, only providing error in development
   res.locals.message = err.message;
+  // res.locals.message = 'errorMes';
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-  res.status(err.status || 500);
+  res.status(err.status || 500); 
   res.render('error');
 });
 
