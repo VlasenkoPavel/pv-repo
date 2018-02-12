@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
+const routing_controllers_1 = require("routing-controllers");
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
@@ -13,7 +14,6 @@ const config = require('../../config');
 // import { log } from 'util';
 const index_1 = require("../routes/index");
 const users_1 = require("../routes/users");
-const log_1 = require("../libs/log");
 // const log = getLogger(module);
 class Aplication {
     constructor() {
@@ -54,7 +54,7 @@ class Aplication {
         };
         this.app.use(errorhandler);
     }
-    start() {
+    start(controllersDir) {
         /**
          * Get port from environment and store in Express.
          */
@@ -63,14 +63,17 @@ class Aplication {
         /**
          * Create HTTP server.
          */
-        const server = http.createServer(this.app)
-            .listen(this.app.get('port'), () => log_1.logger.info(`Express server listening on port ${port}`));
+        // const server = http.createServer(this.app)
+        //     .listen(this.app.get('port'), () => log.info(`Express server listening on port ${port}`));
+        const server = routing_controllers_1.createExpressServer({
+            controllers: [`${controllersDir}/*.js`] // we specify controllers we want to use
+        });
         /**
          * Listen on provided port, on all network interfaces.
          */
         server.listen(port);
-        server.on('error', onError);
-        server.on('listening', onListening);
+        // server.on('error', onError);
+        // server.on('listening', onListening);
         /**
          * Normalize a port into a number, string, or false.
          */

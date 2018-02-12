@@ -1,4 +1,6 @@
 import * as express from 'express';
+import {createExpressServer} from "routing-controllers";
+
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
@@ -20,7 +22,7 @@ class Aplication {
     private config: any;
 
     constructor() {
-        this.app = express(); 
+        this.app = express();
         this.config = config;
         this.init();
     }
@@ -50,20 +52,20 @@ class Aplication {
         // catch 404 and forward to error handler
         this.app.use(catch404Handler);
         let errorhandler: express.ErrorRequestHandler;
-        
+
         errorhandler = function(err: any, req: express.Request, res: express.Response, next: express.NextFunction) {
             // set locals, only providing error in development
             res.locals.message = err.message;
             // res.locals.message = 'errorMes';
             res.locals.error = req.app.get('env') === 'development' ? err : {};
             // render the error page
-            res.status(err.status || 500); 
+            res.status(err.status || 500);
             res.render('error');
         }
         this.app.use(errorhandler);
     }
 
-    public start() {
+    public start(controllersDir: string) {
         /**
          * Get port from environment and store in Express.
          */
@@ -73,15 +75,18 @@ class Aplication {
         /**
          * Create HTTP server.
          */
-        const server = http.createServer(this.app)
-            .listen(this.app.get('port'), () => log.info(`Express server listening on port ${port}`));
+        // const server = http.createServer(this.app)
+        //     .listen(this.app.get('port'), () => log.info(`Express server listening on port ${port}`));
+        const server = createExpressServer({
+            controllers: [`${controllersDir}/*.js`] // we specify controllers we want to use
+         });
 
         /**
          * Listen on provided port, on all network interfaces.
          */
         server.listen(port);
-        server.on('error', onError);
-        server.on('listening', onListening);
+        // server.on('error', onError);
+        // server.on('listening', onListening);
 
         /**
          * Normalize a port into a number, string, or false.
