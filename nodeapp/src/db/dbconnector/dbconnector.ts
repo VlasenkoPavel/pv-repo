@@ -1,4 +1,3 @@
-
 import { createConnection, ConnectionOptions } from "typeorm";
 import { Photo } from "../models/Photo";
 
