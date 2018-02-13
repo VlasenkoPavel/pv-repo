@@ -10,10 +10,7 @@ const bodyParser = require('body-parser');
 const debug = require('debug')('nodeapp:server');
 const http = require('http');
 const config = require('../../config');
-// var log = require('../libs/log')(module);
-// import { log } from 'util';
-const index_1 = require("../routes/index");
-const users_1 = require("../routes/users");
+const dbconnector_1 = require("../db/dbconnector/dbconnector");
 // const log = getLogger(module);
 class Aplication {
     constructor() {
@@ -32,8 +29,6 @@ class Aplication {
         this.app.use(bodyParser.urlencoded({ extended: false }));
         this.app.use(cookieParser());
         this.app.use(express.static(path.join(__dirname, '../public')));
-        this.app.use('/', index_1.router);
-        this.app.use('/users', users_1.router);
         let catch404Handler;
         catch404Handler = function (req, res, next) {
             const err = new Error('Not Found');
@@ -60,6 +55,8 @@ class Aplication {
          */
         const port = this.config.get('port');
         this.app.set('port', port);
+        const dbconnector = new dbconnector_1.Dbconnector(this.config.get('dbconfig'));
+        dbconnector.createDbConnection();
         /**
          * Create HTTP server.
          */

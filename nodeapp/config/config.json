@@ -1,3 +1,15 @@
 {
-    "port": 3000
+    "port": 3000,
+    "dbconfig": {
+        "type": "postgres",
+        "host": "localhost",
+        "username": "pvlasenko",
+        "password": "ac3102",
+        "database": "nodeapp",
+        "entities": [
+            "/home/pvlasenko/Desktop/pv-repo/nodeapp/src/db/models"
+        ],
+        "synchronize": true,
+        "logging": false
+    }
 }

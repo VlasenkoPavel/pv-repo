@@ -12,9 +12,8 @@ const config = require('../../config');
 // var log = require('../libs/log')(module);
 // import { log } from 'util';
 
-import { router as index } from '../routes/index';
-import { router as users } from '../routes/users';
 import { logger as log } from '../libs/log';
+import { Dbconnector } from '../db/dbconnector/dbconnector';
 // const log = getLogger(module);
 
 class Aplication {
@@ -39,8 +38,6 @@ class Aplication {
         this.app.use(bodyParser.urlencoded({ extended: false }));
         this.app.use(cookieParser());
         this.app.use(express.static(path.join(__dirname, '../public')));
-        this.app.use('/', index);
-        this.app.use('/users', users);
 
         let catch404Handler: express.Handler;
 
@@ -71,6 +68,9 @@ class Aplication {
          */
         const port = this.config.get('port');
         this.app.set('port', port);
+
+        const dbconnector = new Dbconnector(this.config.get('dbconfig'));
+        dbconnector.createDbConnection();
 
         /**
          * Create HTTP server.
