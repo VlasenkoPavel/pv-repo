@@ -10,35 +10,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
-let Photo = class Photo {
+let Test = class Test {
 };
 __decorate([
     typeorm_1.PrimaryGeneratedColumn(),
     __metadata("design:type", Number)
-], Photo.prototype, "id", void 0);
+], Test.prototype, "id", void 0);
 __decorate([
     typeorm_1.Column({
         length: 100
     }),
     __metadata("design:type", String)
-], Photo.prototype, "name", void 0);
+], Test.prototype, "name", void 0);
 __decorate([
     typeorm_1.Column('text'),
     __metadata("design:type", String)
-], Photo.prototype, "description", void 0);
-__decorate([
-    typeorm_1.Column('text'),
-    __metadata("design:type", String)
-], Photo.prototype, "filename", void 0);
-__decorate([
-    typeorm_1.Column(),
-    __metadata("design:type", Number)
-], Photo.prototype, "views", void 0);
-__decorate([
-    typeorm_1.Column(),
-    __metadata("design:type", Boolean)
-], Photo.prototype, "isPublished", void 0);
-Photo = __decorate([
+], Test.prototype, "description", void 0);
+Test = __decorate([
     typeorm_1.Entity()
-], Photo);
-exports.Photo = Photo;
+], Test);
+exports.Test = Test;
