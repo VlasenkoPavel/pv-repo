@@ -1,5 +1,5 @@
 import * as express from 'express';
-import {createExpressServer} from "routing-controllers";
+import { createExpressServer } from "routing-controllers";
 
 const path = require('path');
 const favicon = require('serve-favicon');
@@ -20,8 +20,12 @@ class Aplication {
     private app: express.Application;
     private config: any;
 
-    constructor() {
-        this.app = express();
+    constructor(controllersDir: string) {
+
+        this.app = createExpressServer({
+            controllers: [`${controllersDir}/*.js`]
+         });
+
         this.config = config;
         this.init();
     }
@@ -39,30 +43,30 @@ class Aplication {
         this.app.use(cookieParser());
         this.app.use(express.static(path.join(__dirname, '../public')));
 
-        let catch404Handler: express.Handler;
+        // let catch404Handler: express.Handler;
 
-        catch404Handler = function(req: express.Request, res: express.Response, next: express.NextFunction) {
-            const err: any = new Error('Not Found');
-            err.status = 404;
-            next(err);
-        }
-        // catch 404 and forward to error handler
-        this.app.use(catch404Handler);
-        let errorhandler: express.ErrorRequestHandler;
+        // catch404Handler = function(req: express.Request, res: express.Response, next: express.NextFunction) {
+        //     const err: any = new Error('Not Found');
+        //     err.status = 404;
+        //     next(err);
+        // }
+        // // catch 404 and forward to error handler
+        // this.app.use(catch404Handler);
+        // let errorhandler: express.ErrorRequestHandler;
 
-        errorhandler = function(err: any, req: express.Request, res: express.Response, next: express.NextFunction) {
-            // set locals, only providing error in development
-            res.locals.message = err.message;
-            // res.locals.message = 'errorMes';
-            res.locals.error = req.app.get('env') === 'development' ? err : {};
-            // render the error page
-            res.status(err.status || 500);
-            res.render('error');
-        }
-        this.app.use(errorhandler);
+        // errorhandler = function(err: any, req: express.Request, res: express.Response, next: express.NextFunction) {
+        //     // set locals, only providing error in development
+        //     res.locals.message = err.message;
+        //     // res.locals.message = 'errorMes';
+        //     res.locals.error = req.app.get('env') === 'development' ? err : {};
+        //     // render the error page
+        //     res.status(err.status || 500);
+        //     res.render('error');
+        // }
+        // this.app.use(errorhandler);
     }
 
-    public start(controllersDir: string) {
+    public start() {
         /**
          * Get port from environment and store in Express.
          */
@@ -73,18 +77,9 @@ class Aplication {
         dbconnector.createDbConnection();
 
         /**
-         * Create HTTP server.
-         */
-        // const server = http.createServer(this.app)
-        //     .listen(this.app.get('port'), () => log.info(`Express server listening on port ${port}`));
-        const server = createExpressServer({
-            controllers: [`${controllersDir}/*.js`] // we specify controllers we want to use
-         });
-
-        /**
          * Listen on provided port, on all network interfaces.
          */
-        server.listen(port);
+        this.app.listen(port);
         // server.on('error', onError);
         // server.on('listening', onListening);
 
@@ -138,7 +133,7 @@ class Aplication {
          * Event listener for HTTP server "listening" event.
          */
         function onListening() {
-            var addr = server.address();
+            var addr = this.app.address();
             var bind = typeof addr === 'string'
                 ? 'pipe ' + addr
                 : 'port ' + addr.port;
