@@ -7,7 +7,7 @@
         "password": "ac3102",
         "database": "nodeapp",
         "entities": [
-            "/home/pvlasenko/Desktop/pv-repo/nodeapp/src/db/entities"
+            "/home/pvlasenko/Desktop/pv-repo/nodeapp/src/models/entities"
         ],
         "synchronize": true,
         "logging": false
