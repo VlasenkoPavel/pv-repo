@@ -1,0 +1,21 @@
+docker images
+docker rmi -f id
+
+docker build -t user-service .
+
+docker build . -t demo
+docker run demo node -e "console.log('Hello, World')"
+
+sudo service docker restart
+
+docker build -t example --build-arg ssh_prv_key="$(cat ~/.ssh/id_rsa)" --build-arg ssh_pub_key="$(cat ~/.ssh/id_rsa.pub)" --squash .
+
+docker run -t -i demo node app
+^p^q для выхода
+
+docker run -d -it -p3003:3003 demo node app
+docker kill adoring_hoover
+docker logs adoring_hoover
+docker ps
+docker kill $(docker ps -q)
+docker system prune
