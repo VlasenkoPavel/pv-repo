@@ -1,0 +1,52 @@
+{
+  "name": "user-service",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "apidoc": "./node_modules/.bin/gulp apidoc",
+    "build": "./node_modules/.bin/gulp",
+    "build-dev": "./node_modules/.bin/gulp dev",
+    "start": "SM_ENV=dev node ./dist/app",
+    "start-dev": "SM_ENV=dev node-dev ./dist/app",
+    "migrate": "node ./dist/bin/dbConfig > ormconfig.json && ./node_modules/.bin/typeorm migrations:run",
+    "migrate-undo": "node ./dist/bin/dbConfig > ormconfig.json && ./node_modules/.bin/typeorm migrations:revert",
+    "load-fixtures": "node ./dist/bin/load/LoadFixtures",
+    "load": "yarn run load-fixtures",
+    "load-release-4": "node ./dist/bin/load/release/Load4",
+    "load-simple-pwd": "node ./dist/bin/load/dev/LoadSimplePassword"
+  },
+  "dependencies": {
+    "ajv": "5.3.0",
+    "class-transformer": "0.1.8",
+    "class-validator": "0.7.3",
+    "express": "4.16.2",
+    "lodash": "4.17.4",
+    "logrotate-stream": "0.2.5",
+    "morgan": "1.9.0",
+    "nodules": "git+ssh://git@github.com/c7s/nodules.git#dev",
+    "pg": "7.3.0",
+    "q": "1.5.1",
+    "reflect-metadata": "0.1.10",
+    "routing-controllers": "0.7.6",
+    "sprintf-js": "1.1.1",
+    "typeorm": "0.1.1"
+  },
+  "devDependencies": {
+    "@types/logrotate-stream": "0.2.29",
+    "@types/morgan": "1.7.35",
+    "@types/pg": "7.1.5",
+    "@types/sprintf-js": "1.1.0",
+    "axios": "^0.17.1",
+    "deployment": "git+ssh://git@github.com/c7s/deployment.git#dev",
+    "gulp": "3.9.1",
+    "gulp-apidoc": "0.2.6",
+    "gulp-sequence": "0.4.6",
+    "gulp-tslint": "8.1.2",
+    "gulp-typescript": "3.2.3",
+    "gulp-watch": "4.3.11",
+    "node-dev": "3.1.3",
+    "sber-marketing-types": "link:../types/",
+    "tslint": "5.8.0",
+    "typescript": "2.5.3"
+  }
+}
