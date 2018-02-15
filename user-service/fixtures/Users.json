@@ -1,0 +1,197 @@
+[
+  {
+    "firstName": "Admin",
+    "secondName": "Admin",
+    "email": "admin",
+    "phoneNumber": "0",
+    "password": "1" 
+  },
+  {
+    "firstName": "Яна",
+    "secondName": "Раскладка",
+    "email": "yana.raskladka@sns-digital.ru",
+    "phoneNumber": "+7 926 226 21 06",
+    "password": "123qwe"
+  },
+  {
+    "firstName": "Артем",
+    "secondName": "Аманов",
+    "email": "artem.amanov@sns-digital.ru",
+    "phoneNumber": "+7 926 276 88 50",
+    "password": "123qwe" 
+  },
+  {
+    "firstName": "Григорий",
+    "secondName": "Серегин",
+    "email": "grigory.seregin@sns-digital.ru",
+    "phoneNumber": "8 925 565 70 71 ",
+    "password": "123qwe" 
+  },
+  {
+    "firstName": "Анастасия",
+    "secondName": "Орлова",
+    "email": "anastasiya.orlova@sns-digital.ru",
+    "phoneNumber": "+7 985 140 70 66",
+    "password": "123qwe" 
+  },
+  {
+    "firstName": "Анна",
+    "secondName": "Лучкова",
+    "email": "anna.luchkova@sns-digital.ru",
+    "phoneNumber": "8 926 186 56 64",
+    "password": "123qwe" 
+  },
+  {
+    "firstName": "Вячеслав",
+    "secondName": "Дегтярев",
+    "email": "elina.tarasiuk@sns-digital.ru",
+    "phoneNumber": "+7 903 011 04 19",
+    "password": "123qwe" 
+  },
+  {
+    "firstName": "Анна",
+    "secondName": "Синева",
+    "email": "anna.sineva@isobar.ru",
+    "phoneNumber": "8 (915) 353-31-04",
+    "password": "123qwe" 
+  },
+  {
+    "firstName": "Мария",
+    "secondName": "Ивашутина",
+    "email": "mariia.ivashutina@isobar.ru",
+    "phoneNumber": "+7 926 608 48 83",
+    "password": "123qwe" 
+  },
+  {
+    "firstName": "Дина",
+    "secondName": "Абдушелишвили",
+    "email": "dina.abdushelishvili@adwatch.ru",
+    "phoneNumber": "8 926 537 88 65",
+    "password": "123qwe" 
+  },
+  {
+    "firstName": "Людмила",
+    "secondName": "Колоскова",
+    "email": "liudmila.koloskova@dentsu-smart.ru",
+    "phoneNumber": "+7 903 244 98 92",
+    "password": "123qwe" 
+  },
+  {
+    "firstName": "Екатерина",
+    "secondName": "Атакишиева",
+    "email": "ekaterina.atakishieva@dentsu-smart.ru",
+    "phoneNumber": "+7 925 881 41 66",
+    "password": "123qwe" 
+  },
+  {
+    "firstName": "Алсу",
+    "secondName": "Хасанова",
+    "email": "akhasanova@dentsu-smart.ru",
+    "phoneNumber": "+7 925 881 61 05",
+    "password": "123qwe" 
+  },
+  {
+    "firstName": "Яна",
+    "secondName": "Асеева",
+    "email": "yaseeva@dentsu-smart.ru",
+    "phoneNumber": "+7 929 633 38 33",
+    "password": "123qwe" 
+  },
+  {
+    "firstName": "Татьяна",
+    "secondName": "Кастерова",
+    "email": "tatiana.kasterova@dentsu-smart.ru",
+    "phoneNumber": "+7 963 999 74 42",
+    "password": "123qwe" 
+  },
+  {
+    "firstName": "Наталия",
+    "secondName": "Цургаева",
+    "email": "natalia.tsurgaeva@dentsu-smart.ru",
+    "phoneNumber": "+7 916 909 00 91",
+    "password": "123qwe" 
+  },
+  {
+    "firstName": "Александр",
+    "secondName": "Мовсесов",
+    "email": "alexandr.movsesov@Storylab.ru",
+    "phoneNumber": "+7 919 100 40 20",
+    "password": "123qwe" 
+  },
+  {
+    "firstName": "Алиса",
+    "secondName": "Кольмина",
+    "email": "alisa.kolmina@Storylab.ru",
+    "phoneNumber": "+7 916 306 00 09",
+    "password": "123qwe" 
+  },
+  {
+    "firstName": "Полина",
+    "secondName": "Кузьмичева",
+    "email": "polina.kuzmicheva@storylab.ru",
+    "phoneNumber": "+7 925 110 28 96",
+    "password": "123qwe" 
+  },
+  {
+    "firstName": "Алена",
+    "middleName": "Сергеевна",
+    "secondName": "Cоболева",
+    "email": "soboleva.el.se@sberbank.ru",
+    "phoneNumber": "79257348377",
+    "password": "123qwe" 
+  },
+  {
+    "firstName": "Виталий",
+    "middleName": "Олегович",
+    "secondName": "Шитов",
+    "email": "voshitov@sberbank.ru",
+    "phoneNumber": "79636112285",
+    "password": "123qwe" 
+  },
+  {
+    "firstName": "Анна",
+    "middleName": "Валентиновна",
+    "secondName": "Тульская",
+    "email": "avtulskaya@sberbank.ru",
+    "phoneNumber": "+79652512491",
+    "password": "123qwe" 
+  },
+  {
+    "firstName": "Наталья",
+    "middleName": "Ростиславовна",
+    "secondName": "Игошина",
+    "email": "nrigoshina@sberbank.ru",
+    "phoneNumber": "79066207292",
+    "password": "123qwe" 
+  },
+  {
+    "firstName": "Артём",
+    "middleName": "Вячеславович",
+    "secondName": "Максимов",
+    "email": "avmaksimov.OUT@sberbank.ru",
+    "phoneNumber": "79254725902",
+    "password": "123qwe" 
+  },
+  {
+    "firstName": "Денис",
+    "middleName": "Андреевич",
+    "secondName": "Кожаев",
+    "email": "kozhaev.de.an@sberbank.ru",
+    "phoneNumber": "79032601414",
+    "password": "123qwe" 
+  },
+  {
+    "firstName": "Гиязов",
+    "secondName": "Алексей",
+    "email": "gijazov.de.an@sberbank.ru",
+    "phoneNumber": "79032601400",
+    "password": "123qwe" 
+  },
+  {
+    "firstName": "Шекляев",
+    "secondName": "Михаил",
+    "email": "sheck@dentsu.ru",
+    "phoneNumber": "79032600000",
+    "password": "123qwe" 
+  }
+]

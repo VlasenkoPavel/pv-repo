@@ -1,0 +1,106 @@
+[
+    {
+        "firstName": "Владислав",
+        "middleName": "Геннадьевич",
+        "secondName": "Крейнин",
+        "email": "vgkreynin@sberbank.ru",
+        "phoneNumber": "+7 962 984 19 25",
+        "password": "p7J5Fl"
+    },
+    {
+        "firstName": "Алексей",
+        "middleName": "Валерьевич",
+        "secondName": "Гиязов",
+        "email": "AVGiyazov@sberbank.ru",
+        "phoneNumber": "+7 963 769 53 06",
+        "password": "J15oED"
+    },
+    {
+        "firstName": "Наталья",
+        "middleName": "Ростиславовна",
+        "secondName": "Игошина",
+        "email": "NRIgoshina@sberbank.ru",
+        "phoneNumber": "+7 909 620 72 92",
+        "password": "3RkxgP"
+    },
+    {
+        "firstName": "Екатерина",
+        "middleName": "Михайловна",
+        "secondName": "Дьяконова",
+        "email": "EMDyakonova@sberbank.ru",
+        "phoneNumber": "+7 916 622 62 65",
+        "password": "DWL5mR"
+    },
+    {
+        "firstName": "Станислав",
+        "middleName": "Лидиевич",
+        "secondName": "Клещельский",
+        "email": "SLKleschelskiy@sberbank.ru",
+        "phoneNumber": "+7 905 743 27 27",
+        "password": "atJ7LA"
+    },
+    {
+        "firstName": "Виталий",
+        "middleName": "Олегович",
+        "secondName": "Шитов",
+        "email": "VOShitov@sberbank.ru",
+        "phoneNumber": "+7 963 611 22 85",
+        "password": "tP3cbV"
+    },
+    {
+        "firstName": "Оксана",
+        "middleName": "Германовна",
+        "secondName": "Бодягина",
+        "email": "OG1Bodyagina@sberbank.ru",
+        "phoneNumber": "+7 915 092 96 21",
+        "password": "BuHi9i"
+    },
+    {
+        "firstName": "Елена",
+        "middleName": "Сергеевна",
+        "secondName": "Соболева",
+        "email": "Soboleva.El.Se@sberbank.ru",
+        "phoneNumber": "+7 925 734 83 77",
+        "password": "BH3onv"
+    },
+    {
+        "firstName": "Артем",
+        "middleName": "Вячеславович",
+        "secondName": "Максимов",
+        "email": "avvmaksimov@gmail.com",
+        "phoneNumber": "+7 925 472 59 02",
+        "password": "mwTT2y"
+    },
+    {
+        "firstName": "Денис",
+        "middleName": "Андреевич",
+        "secondName": "Кожаев",
+        "email": "Kozhaev.De.An@sberbank.ru",
+        "phoneNumber": "+7 903 260 14 14",
+        "password": "uv8Twj"
+    },
+    {
+        "firstName": "Юлия",
+        "middleName": "Александровна",
+        "secondName": "Шабалина",
+        "email": "YuAShabalina@sberbank.ru",
+        "phoneNumber": "+7 916 575 08 10",
+        "password": "wr5bDh"
+    },
+    {
+        "firstName": "Александр",
+        "middleName": "Викторович",
+        "secondName": "Еграшин",
+        "email": "Egrashin.A.V@sberbank.ru",
+        "phoneNumber": "'+7 968 041 41 11",
+        "password": "4LiXqO"
+    },
+    {
+        "firstName": "Анна",
+        "middleName": "Валентиновна",
+        "secondName": "Тульская",
+        "email": "AVTulskaya@sberbank.ru",
+        "phoneNumber": "+7 965 251 24 91",
+        "password": "a97OsB"
+    }
+]
