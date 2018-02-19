@@ -91,3 +91,9 @@ docker run -d --net foodtrucks -p 9200:9200 -p 9300:9300 --name es elasticsearch
 # start the flask app container
 docker run -d --net foodtrucks -p 5000:5000 --name foodtrucks-web prakhar1989/foodtrucks-web
 docker build -t demo --build-arg sshPublicKey="$(cat /home/pvlasenko/.ssh/id_rsa.pub)" --build-arg sshPrivateKey="$(cat /home/pvlasenko/.ssh/id_rsa)" .
+
+
+docker run --rm -P --name pg_test user-service-db
+psql -h localhost -p 5432 -d sm_users -U gorod --password
+docker run --rm -P --name pg_test usdb
+docker run -v /dist:/opt/app/dist -it --rm  userserv bash
