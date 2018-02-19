@@ -22,6 +22,8 @@ docker rm 305297d7a235 ff0a5c3750b9
 docker rm $(docker ps -a -q -f status=exited)
 docker rmi
 
+BUILD
+/////////////////////////////////////
 docker build -t user-service .
 
 docker build . -t demo
@@ -88,3 +90,4 @@ docker run -d --net foodtrucks -p 9200:9200 -p 9300:9300 --name es elasticsearch
 
 # start the flask app container
 docker run -d --net foodtrucks -p 5000:5000 --name foodtrucks-web prakhar1989/foodtrucks-web
+docker build -t demo --build-arg sshPublicKey="$(cat /home/pvlasenko/.ssh/id_rsa.pub)" --build-arg sshPrivateKey="$(cat /home/pvlasenko/.ssh/id_rsa)" .
