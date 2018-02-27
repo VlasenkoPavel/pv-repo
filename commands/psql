@@ -1,0 +1,197 @@
+PostgreSQL: справочник по командам psql, pg_dump, pg_restore
+Все команды запускаются под пользователем postgres (postgresql-суперпользователь)
+
+$ su - postgres
+psql -l - список баз данных.
+
+psql -d dbname - подключение к БД dbname.
+
+psql -f file.sql - выполнение команд из файла file.sql.
+
+psql -U postgres -d dbname -c "CREATE TABLE test(some_id serial PRIMARY KEY, some_text text);" - выполнение команды в базе dbname.
+
+psql -d dbname -H -c "SELECT * FROM test" -o test.html - вывод результата запроса в html-файл.
+
+Просмотр списка и путей к конфигурационным файлам
+
+psql > SELECT name, setting FROM pg_settings WHERE category = 'File Locations';
+# или список всех конфигурационных параметров
+psql > show all;
+Список активных соединений с информацией о: pid процесса, выполняющегося запроса, пользователя, базы данных.
+
+psql > SELECT * FROM pg_stat_activity;
+Создание индексов
+
+# primary key
+psql > ALTER TABLE tableName ADD PRIMARY KEY (id);
+
+# unique index
+psql > CREATE UNIQUE INDEX indexName ON tableName (columnNames);
+
+
+
+
+Команды psql
+
+\c dbname - подсоединение к БД dbname.
+
+\l - список баз данных.
+
+\dt - список всех таблиц.
+
+\d table - структура таблицы table.
+
+\du - список всех пользователей и их привилегий.
+
+\dt+ - список всех таблиц с описанием.
+
+\dt *s* - список всех таблиц, содержащих s в имени.
+
+\i FILE - выполнить команды из файла FILE.
+
+\o FILE - сохранить результат запроса в файл FILE.
+
+\a - переключение между режимами вывода: с/без выравнивания.
+
+Бекап и восстановление таблиц
+
+В PostgreSQL есть две утилиты для бекапа pg_dump и pg_dumpall. pg_dump используется для бекапа одной базы, pg_dumpall для бекапа всех баз и сервера в целом (необходимо запускать под postgresql-суперпользователем).
+
+Создание бекапа базы mydb, в сжатом виде
+
+pg_dump -h localhost -p 5432 -U someuser -F c -b -v -f mydb.backup mydb
+Создание бекапа базы mydb, в виде обычного текстового файла, включая команду для создания БД
+
+pg_dump -h localhost -p 5432 -U someuser -C -F p -b -v -f mydb.backup mydb
+Создание бекапа базы mydb, в сжатом виде, с таблицами которые содержат в имени payments
+
+pg_dump -h localhost -p 5432 -U someuser -F c -b -v -t *payments* -f payment_tables.backup mydb
+Дамп данных только одной, конкретной таблицы. Если нужно создать резервную копию нескольких таблиц, то имена этих таблиц перечисляются с помощью ключа -t для каждой таблицы.
+
+pg_dump -a -t table_name -f file_name database_name
+Создание резервной копии с сжатием в gz
+
+pg_dump -h localhost  -O -F p -c -U postgres mydb | gzip -c > mydb.gz
+
+
+
+Список наиболее часто используемых опций:
+
+-h host - хост, если не указан то используется localhost или значение из переменной окружения PGHOST.
+
+-p port - порт, если не указан то используется 5432 или значение из переменной окружения PGPORT.
+
+-u - пользователь, если не указан то используется текущий пользователь, также значение можно указать в переменной окружения PGUSER.
+
+-a, --data-only - дамп только данных, по-умолчанию сохраняются данные и схема.
+
+-b - включать в дамп большие объекты (blog'и).
+
+-s, --schema-only - дамп только схемы.
+
+-C, --create - добавляет команду для создания БД.
+
+-c - добавляет команды для удаления (drop) объектов (таблиц, видов и т.д.).
+
+-O - не добавлять команды для установки владельца объекта (таблиц, видов и т.д.).
+
+-F, --format {c|t|p} - выходной формат дампа, custom, tar, или plain text.
+
+-t, --table=TABLE - указываем определенную таблицу для дампа.
+
+-v, --verbose - вывод подробной информации.
+
+-D, --attribute-inserts - дамп используя команду INSERT с списком имен свойств.
+
+
+
+Бекап всех баз данных используя команду pg_dumpall.
+
+pg_dumpall > all.sql
+
+# проверка бекапа 
+
+grep "^[\]connect" all.sql
+\connect db1
+\connect db2
+В PostgreSQL есть две утилиты для восстановления базы из бекапа.
+
+psql - восстановление бекапов, которые хранятся в обычном текстовом файле (plain text);
+pg_restore - восстановление сжатых бекапов (tar);
+Восстановление всего бекапа с игнорированием ошибок
+
+psql -h localhost -U someuser -d dbname -f mydb.sql
+Восстановление всего бекапа с остановкой на первой ошибке
+
+psql -h localhost -U someuser --set ON_ERROR_STOP=on -f mydb.sql
+Для восстановления из tar-арихива нам понадобиться сначала создать базу с помощью CREATE DATABASE mydb; (если при создании бекапа не была указана опция -C) и восстановить
+
+pg_restore --dbname=mydb --jobs=4 --verbose mydb.backup
+Восстановление резервной копии БД, сжатой gz
+
+gunzip mydb.gz
+psql -U postgres -d mydb -f mydb
+Начиная с версии 9.2 можно восстановить только структуру таблиц с помощью опции --section
+
+# создаем БД
+CREATE DATABASE mydb2;
+
+# восстанавливаем
+pg_restore --dbname=mydb2 --section=pre-data --jobs=4 mydb.backup
+Обслуживание таблицы
+
+VACUUM ANALYZE table;
+
+REINDEX DATABASE dbName;
+
+REINDEX TABLE tabName;
+Перенос директории с данным (data directory)
+
+Узнать текущий путь
+
+# способ 1
+$ su - postgres
+$ psql
+psql > SHOW data_directory;
+
+# способ 2
+$ ps ax | grep 'postgres -D'
+Создадим новую директорию, назначим пользователя и инициализируем
+
+mkdir -p /pathto/postgresql/data
+chown -R postgres:postgres /pathto/postgresql
+
+su - postgres
+initdb -D /pathto/postgresql/data
+Теперь надо подправить файл с сервисом, который стартует postgresql
+
+# под arch linux
+sudo vim /etc/systemd/system/multi-user.target.wants/postgresql.service
+
+Environment=PGROOT=/pathto/postgresql/
+PIDFile=/pathto/postgresql/data/postmaster.pid
+Очищение таблицы
+
+Очищение таблицы tablename и обнуление счетчика с ID.
+
+TRUNCATE TABLE tablename RESTART IDENTITY CASCADE;
+CASCADE нужен на случай если tablename связана с другой таблицей.
+
+Удаление NULL у поля
+
+ALTER TABLE movies ALTER COLUMN year DROP NOT NULL;
+Утилиты
+
+pgcli утилита командной строки с авто-дополнениям и подсветкой синтаксиса.
+
+Установка
+
+pip install pgcli
+Запуск
+
+pgcli -U postgres -W dbname
+
+autoincrement
+PostgreSQL has the data types smallserial, serial and bigserial. These are similar to AUTO_INCREMENT property supported by some other databases.
+
+psql sm_users < /etc/sm_users.sql

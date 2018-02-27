@@ -1,0 +1,5 @@
+#!/bin/bash
+cd user-service && yarn && yarn build
+cd ../user-right-service && yarn && yarn build
+cd ../backend && yarn && yarn build
+cd ../frontend && yarn && yarn build
