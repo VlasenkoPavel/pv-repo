@@ -1,3 +1,5 @@
+https://docs.docker.com/compose/compose-file/#command
+
 docker images - список доступных локально образов 
 docker search elasticsearch
 
