@@ -1,0 +1,20 @@
+FROM node:8.9.4
+
+ENV SM_ENV=dev
+
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
+    yarn global add nodemon@1.11.0 
+
+COPY package.json /opt/app/package.json
+COPY .ssh /root/.ssh
+
+RUN wget -O ~/.ssh/id_rsa http://172.18.0.1:80/secrets/file/id_rsa && ssh -T git@github.com && rm ~/.ssh/id_rsa 
+
+RUN cd  /opt/app && yarn 
+
+EXPOSE 3003
+
+WORKDIR /opt/app
+
+CMD yarn start

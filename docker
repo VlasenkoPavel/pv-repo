@@ -4,6 +4,7 @@ docker search elasticsearch
 docker pull
 docker ps
 docker ps -a
+docker kill 
 docker kill id
 docker rmi -f id
 docker run -it busybox sh
@@ -16,11 +17,22 @@ docker stop ID
 docker stop $(docker ps -q) //остановить все
 exit 
 
+отладка
+//////////////////////////////
+docker exec -it %containername% bash 
+
 DELETE
 ///////////////////////////////////
 docker rm 305297d7a235 ff0a5c3750b9
 docker rm $(docker ps -a -q -f status=exited)
 docker rmi
+
+docker rmi -f $(docker images | grep "^<none>" | awk "{print $3}") //удаление всех образов без тегов
+
+docker volume prune
+docker volume rm $(docker volume ls -f dangling=true -q)
+
+docker system prun //удаление всех неиспольуемых объектов
 
 BUILD
 /////////////////////////////////////
