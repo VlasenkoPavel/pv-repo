@@ -1,0 +1,114 @@
+version: "3"
+services:
+  # redis:
+  #   image: redis:latest
+  #   restart: on-failure:3
+  user-service:
+    image: sm-user-service:1.0.0
+    build:
+      context: ../../user-service
+      dockerfile: Dockerfile.dev
+    # volumes:
+    #   - $SSH_AUTH_SOCK:/ssh-agent
+    #   # - /run/user/1000/keyring-foo/ssh:/run/user/1000/keyring-foo/ssh
+    #   # - /run/user/1000/keyring/ssh:/run/user/1000/keyring/ssh
+    #   - /home/pavel/Desktop/sber-marketing/user-service:/opt/app
+    #   - /home/pavel/.ssh:/root/.ssh
+    # environment:
+    #   SSH_AUTH_SOCK: /ssh-agent
+    ports:
+      - "3003:3003"
+    # command: ["eval "$(ssh-agent -s)"", "&&", "ssh-add", "&&", "yarn"]
+    # ssh-add /root/.ssh/id_rsa 
+# volumes:
+#   ssh-agent:
+#     external: true
+  # user-right-service:
+  #   image: sm-user-right-service:1.0.0
+  #   build:
+  #     context: ../../user-right-service
+  #     dockerfile: Dockerfile
+  #   volumes:
+  #     - ${PWD}/user-right-service/dist:/opt/app/dist
+  #     - ${PWD}/user-right-service/config:/opt/app/config
+  #   ports:
+  #     - "3002:3002"
+  # backend:
+  #   image: sm-backend:1.0.0
+  #   build:
+  #     context: ../../backend
+  #     dockerfile: Dockerfile
+  #   volumes:
+  #     - ${PWD}/backend/dist:/opt/app/dist
+  #     - ${PWD}/backend/config:/opt/app/config
+  #   ports:
+  #     - "3001:3001"
+  # frontend:
+  #   image: sm-frontend:1.0.0
+  #   build:
+  #     context: ../../frontend
+  #     dockerfile: Dockerfile
+  #   depends_on:
+  #     - redis
+  #     - user-service
+  #     - user-right-service
+  #     - backend
+  #   volumes:
+  #     - ${PWD}/frontend/dist:/opt/app/dist
+  #     - ${PWD}/frontend/config:/opt/app/config
+  #   ports:
+  #     - "3000:3000"
+  # sm-admin:
+  #   image: sm-admin:1.0.0
+  #   build:
+  #     context: ../../admin
+  #     dockerfile: Dockerfile
+  #   depends_on:
+  #     - redis
+  #     - user-service
+  #     - user-right-service
+  #     - backend
+  #   volumes:
+  #     - ${PWD}/admin/dist/server:/opt/app/dist/server
+  #     - ${PWD}/admin/config:/opt/app/config
+  #   ports:
+  #     - "4000:4000"
+  # image-service-nginx:
+  #   image: ${docker_registry}/image-service-nginx
+  #   depends_on:
+  #     - image-service-web
+  #     - image-service-worker
+  #   volumes:
+  #     - /opt/log:/var/log,
+  #     - /opt/image:/opt/image
+  #   ports:
+  #     - "8080:80/tcp"
+  #     - "29969:29969/tcp"
+  #   restart: on-failure:3
+  # image-service-web:
+  #   image: ${docker_registry}/image-service-web
+  #   depends_on:
+  #     - redis
+  #   environment:
+  #       - IS_ENV=dev
+  #       - IS_BASE_URL=http://image.localhost:8080
+  #       - IS_REDIS_HOST=redis
+  #   volumes:
+  #     - /opt/log:/var/log
+  #     - /opt/log:/opt/image-service/runtime
+  #     - /opt/image:/opt/image
+  #   ports:
+  #     - "9000:9000/tcp"
+  #   restart: on-failure:3
+  # image-service-worker:
+  #   image: ${docker_registry}/image-service-worker
+  #   depends_on:
+  #     - redis
+  #   environment:
+  #     - IS_ENV=dev
+  #     - IS_REDIS_HOST=redis
+  #   volumes:
+  #     - /opt/log:/var/log
+  #     - /opt/log:/opt/image-service/runtime
+  #     - /opt/image:/opt/image
+  #   restart: on-failure:3
