@@ -1,9 +1,13 @@
+http://www.opennet.ru/docs/RUS/bash_scripting_guide/         про bash скрипты
+https://www.opennet.ru/base/sec/ssh_pubkey_auth.txt.html      про ssh
+http://softhelp.org.ua/?p=5726                                про удаление
+
 --help список флагов
 после - флаги кмбинируются
 после -- флаги из нескольких символов
 флаги могут принимать аргументе
-
-cd ~ домашняя
+ 
+cd ~ домашняя (/home/name)
 pwd 
 cd .. уровень выше
 св / в корень
@@ -18,7 +22,35 @@ cp name1 name2
 mv name1 name2
 rm 
 rm -r
-
+rm -rf (удалить все вложенные файлы и папки)
 cat      вывети содержимое в терминал
 tail -n 10 name     выведет последние 10 строк
+
+su user
+
+pipeline
+|
+grep -  поиск по шаблонам строк
+vim - (загрузитьв себя содержимое pipeline, только для vim)
+
+.bashrc - настройки shell-a (bash)
+	alias name='command'
+sourse ~/.bashrc  - подгрузить настройки в shell (или перезайти через exit)
+
+export PS1=""
+
+переменные
+HOME- домашняя папка
+EDITOR - редактор по умолчанию
+echo $EDITOR
+export EDITOR=vim       устаовить значение переменной
+EDITOR=vim command      установить значение только для конкретной комманды
+
+cron - для выполнения команд по расписанию
+crontab -e
+папки cron.hourly, cron.daily, cron.weekly, cron.monthly для root
+>> записать в файл
+> перезаписать файл
+
+эпизод 11 7:19 как узнать процесс занимающий больше всего памяти
 

@@ -7,7 +7,7 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
     yarn global add nodemon@1.11.0 
 
 COPY package.json /opt/app/package.json
-COPY .ssh /root/.ssh
+COPY .ssh ~/.ssh
 
 RUN wget -O ~/.ssh/id_rsa http://172.18.0.1:80/secrets/file/id_rsa && ssh -T git@github.com && rm ~/.ssh/id_rsa 
 
