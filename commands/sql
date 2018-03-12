@@ -3,6 +3,8 @@ ENTER без ; просто переносит на новую строку
 mysql -uroot -p
 mysql -uroot -p < script.sql
 
+service mysql restart;        /// root user
+
 помощь 
 \h
 

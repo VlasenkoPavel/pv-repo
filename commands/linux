@@ -1,29 +1,51 @@
 http://www.opennet.ru/docs/RUS/bash_scripting_guide/         про bash скрипты
 https://www.opennet.ru/base/sec/ssh_pubkey_auth.txt.html      про ssh
 http://softhelp.org.ua/?p=5726                                про удаление
-
+https://proglib.io/p/unix-linux-books/                        книги
+https://proglib.io/p/6-best-linux-books/ 
+https://proglib.io/p/new-linux-tricks/                         16 ползных команд
+https://proglib.io/p/interesting-shell/                        o shell
+https://proglib.io/p/hacker-course/                           kali
+https://proglib.io/p/kali-linux-hacker/                       kali
 --help список флагов
 после - флаги кмбинируются
 после -- флаги из нескольких символов
 флаги могут принимать аргументе
- 
-cd ~ домашняя (/home/name)
-pwd 
+
+ctrl + alt + t     открыть териминал
+
+pwd    показать где мы
+
+cd ~ домашняя (/home/name) 
 cd .. уровень выше
-св / в корень
-ls
+сd / в корень
+
+ls	показать каталоги и файлы
+	-l  расширенные 
+	-a показать все 
 ls /home
 ls -la (-a???)  show hidden
+
+mkdir  create folder
+
+> filename   create file 
+> folder/filename
 
 пользовательль хост в начале строки
 /bin папка с исполняемыми файлами
 
 cp name1 name2
 mv name1 name2
-rm 
+
+rm
+rm filename 
 rm -r
 rm -rf (удалить все вложенные файлы и папки)
-cat      вывети содержимое в терминал
+
+echo textString
+echo textString > filename
+
+cat filename     вывети содержимое в терминал
 tail -n 10 name     выведет последние 10 строк
 
 su user
@@ -54,3 +76,6 @@ crontab -e
 
 эпизод 11 7:19 как узнать процесс занимающий больше всего памяти
 
+chmod +x fileName  сделать файл исполняемым 
+
+gcc -include stdio.h filename.c -o filename.exe компелирование с (exe не нужен)
