@@ -9,11 +9,12 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const debug = require('debug')('nodeapp:server');
 const http = require('http');
-const config = require('../../../config');
 const log_1 = require("../libs/log");
 const dbconnector_1 = require("../dbconnector/dbconnector");
 class Aplication {
-    constructor(controllersDir) {
+    constructor(config) {
+        this.config = config;
+        const controllersDir = this.config.get('controllers');
         this.app = routing_controllers_1.createExpressServer({
             controllers: [`${controllersDir}/*.js`]
         });

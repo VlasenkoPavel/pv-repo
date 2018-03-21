@@ -8,4 +8,6 @@ nconf.argv()
         file: path.join(__dirname, 'config.json')
     });
 
+nconf.set('controllers', path.join(__dirname, '../', 'dist/controllers'));
+
 module.exports = nconf;

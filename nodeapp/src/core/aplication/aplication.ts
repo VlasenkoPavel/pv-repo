@@ -8,7 +8,6 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const debug = require('debug')('nodeapp:server');
 const http = require('http');
-const config = require('../../../config');
 
 import { logger as log } from '../libs/log';
 import { Dbconnector } from '../dbconnector/dbconnector';
@@ -17,8 +16,9 @@ class Aplication {
     private app: express.Application;
     private config: any;
 
-    constructor(controllersDir: string) {
-
+    constructor(config: any) {
+        this.config = config;
+        const controllersDir = this.config.get('controllers');
         this.app = createExpressServer({
             controllers: [`${controllersDir}/*.js`]
          });

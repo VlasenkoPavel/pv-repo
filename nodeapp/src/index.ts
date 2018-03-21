@@ -1,6 +1,5 @@
 import "reflect-metadata";
 import { Aplication } from './core/aplication/aplication';
-
-const controllersDir = `${__dirname}/controllers`;
-const app = new Aplication(controllersDir);
+const config = require('../config');
+const app = new Aplication(config);
 app.start();
